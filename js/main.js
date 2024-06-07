@@ -11,10 +11,20 @@
 // Blue: In a vacuum
 // Purple: Kinetic energy
 
-var graphContainer = document.getElementById("graph-container");
-var genImageButton = document.getElementById("generate-image");
-var plotButton = document.getElementById("plot-trajectory");
-var cancelButton = document.getElementById("cancel");
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+if (isMobile) {
+    var graphContainer = document.getElementById("graph-container-mobile");
+    var genImageButton = document.getElementById("generate-image-mobile");
+    var plotButton = document.getElementById("plot-trajectory-mobile");
+    var cancelButton = document.getElementById("cancel-mobile");
+}
+else {
+    var graphContainer = document.getElementById("graph-container");
+    var genImageButton = document.getElementById("generate-image");
+    var plotButton = document.getElementById("plot-trajectory");
+    var cancelButton = document.getElementById("cancel");
+}
+
 
 genImageButton.addEventListener('click', generatePNG, false);
 plotButton.addEventListener('click', plotTrajectory, false);
@@ -73,7 +83,13 @@ function generatePNG() {
  */
 function plotTrajectory() {
     swapElements(plotButton, cancelButton);
-    var input = getInput();
+
+    if (isMobile) {
+        var input = getMobileInput();
+    }
+    else {
+        var input = getInput();
+    }
 
     if (typeof worker !== 'undefined') {
         worker.terminate();
@@ -129,8 +145,15 @@ function renderGraph() {
     // Remove the graph, if it already exists.
     graphContainer.innerHTML = "";
     var boundingBox = graphContainer.getBoundingClientRect();
-    var width = 800;
-    var height = 400
+    if (isMobile){
+        var width = 400;
+        var height = 300;
+    }
+    else{
+        var width = 800;
+        var height = 400;
+    }
+    
 
     graph = new Graph(width, height, settings)
     // graph = new Graph(boundingBox.width, boundingBox.height, settings);
@@ -166,6 +189,23 @@ function getInput() {
     return input;
 }
 
+function getMobileInput() {
+    // TODO Add alternative unit options (Metric/Imperial) to the UI and handle
+    //      the conversions here.
+    var input = {
+        "gravity": parseFloat(document.getElementById("gravity-mobile").value),
+        "velocity": parseFloat(document.getElementById("velocity-mobile").value),
+        "angle": deg2Rad(parseFloat(document.getElementById("angle-mobile").value)),
+        "height": parseFloat(document.getElementById("height-mobile").value),
+        "mass": parseFloat(document.getElementById("mass-mobile").value),
+        "diameter": parseFloat(document.getElementById("diameter-mobile").value),
+        "dragCoef": parseFloat(document.getElementById("drag-coefficient-mobile").value),
+        "density": parseFloat(document.getElementById("fluid-density-mobile").value)
+    }
+
+    return input;
+}
+
 // function updateFlightStats(duration, distance, height, energy, precision) {
 //     if (typeof precision === "undefined")
 //         precision = 2;
@@ -195,24 +235,45 @@ function validateFields() { }
 /*
 Trajectory Animation
 */
-var canvas = document.getElementById('canvas');
-var btnStart = document.getElementById('btnStart');
-var angle = document.getElementById("animationAngle")
-var height = document.getElementById("height")
-var speed = document.getElementById("animationVelocity");
-var drawing = canvas.getContext("2d");
-var T = 0;
-var X0 = 0;
-var Y0 = canvas.height - height.value;
-var X = X0;
-var Y = Y0;
-var g = 0.0005;
-var run = false;
+if (isMobile) {
+    var canvas = document.getElementById('canvas-mobile');
+    var btnStart = document.getElementById('btnStart-mobile');
+    var angle = document.getElementById("animationAngle-mobile")
+    var height = document.getElementById("height-mobile")
+    var speed = document.getElementById("animationVelocity-mobile");
+    var drawing = canvas.getContext("2d");
+    var T = 0;
+    var X0 = 0;
+    var Y0 = canvas.height - height.value;
+    var X = X0;
+    var Y = Y0;
+    var g = 0.0005;
+    var run = false;
 
-var oldTimeStamp = 0.;
-var secondsPassed = 0.;
-var animationSpeed = document.getElementById("animationSpeed");
+    var oldTimeStamp = 0.;
+    var secondsPassed = 0.;
+    var animationSpeed = document.getElementById("animationSpeed-mobile");
+}
+else {
 
+    var canvas = document.getElementById('canvas');
+    var btnStart = document.getElementById('btnStart');
+    var angle = document.getElementById("animationAngle")
+    var height = document.getElementById("height")
+    var speed = document.getElementById("animationVelocity");
+    var drawing = canvas.getContext("2d");
+    var T = 0;
+    var X0 = 0;
+    var Y0 = canvas.height - height.value;
+    var X = X0;
+    var Y = Y0;
+    var g = 0.0005;
+    var run = false;
+
+    var oldTimeStamp = 0.;
+    var secondsPassed = 0.;
+    var animationSpeed = document.getElementById("animationSpeed");
+}
 btnStart.addEventListener('click', toggle);
 
 
@@ -246,8 +307,8 @@ function update() {
     if (run) {
         // T += 1;
         T += animationSpeed.value * secondsPassed;
-        X = ((speed.value/10) * Math.cos(-angle.value * Math.PI / 180.) * T) + X0;
-        Y = (0.5 * g * T * T) + ((speed.value/10) * Math.sin(-angle.value * Math.PI / 180.) * T) + Y0;
+        X = ((speed.value / 10) * Math.cos(-angle.value * Math.PI / 180.) * T) + X0;
+        Y = (0.5 * g * T * T) + ((speed.value / 10) * Math.sin(-angle.value * Math.PI / 180.) * T) + Y0;
         // console.log(T, X, Y, X0, Y0);
     }
 }
@@ -262,7 +323,7 @@ function draw() {
     drawing.beginPath();
     drawing.moveTo(X0, Y0);
     drawing.strokeStyle = "grey";
-    drawing.lineTo(X0 + 80 * Math.cos(angle.value * Math.PI/180.), Y0 - 80 * Math.sin(angle.value * Math.PI/180.));
+    drawing.lineTo(X0 + 80 * Math.cos(angle.value * Math.PI / 180.), Y0 - 80 * Math.sin(angle.value * Math.PI / 180.));
     drawing.lineWidth = 40;
     drawing.stroke();
 }

@@ -18,156 +18,314 @@
 
 <body>
     <!-- As a link -->
-    <nav class="navbar bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#"><i class="fa-solid fa-crosshairs pe-2 fs-5"></i>Ballistic
-                Calculator</a>
-            <a class="d-flex justify-content-end text-white pe-2 text-decoration-none">Calculate the trajectory of
-                Missile</a>
-        </div>
-    </nav>
-    <div class="container mt-4">
-        <h1 class="text-danger">Ballistic Trajectory Calculator</h1>
-        <hr class="text-danger">
-
-        Use this ballistic calculator in order to calculate the flight path of a bullet given the shooting
-        parameters that meet your conditions. This calculator will produce a ballistic trajectory chart that
-        shows the bullet drop, bullet energy, windage, and velocity. It will a produce a line graph showing the
-        bullet drop and flight path of the bullet. By adding trajectories to the panel on the right you may
-        produce charts and graphs that show the different trajectories side by side. This can be useful in
-        comparing cartridges or loads.
-        <hr>
-        <div class="row">
-            <div class="col-4">
-                <div class="card mt-4">
-                    <div class="card-header text-center text-danger">Single Trajectory</div>
-                    <div class="card-body">
-                        <div class="mb-1">
-                            <div class="row">
-                                <div class="col"><label for="velocity" class="form-label fs-7 fw-lighter">Velocity
-                                        (m/s)</label>
-                                    <input class="form-control form-control-sm" id="velocity" value="85" type="number">
-                                </div>
-                                <div class="col"><label for="angle" class="form-label fs-7 fw-lighter">Angle
-                                        (&deg;)</label>
-                                    <input class="form-control form-control-sm" id="angle" value="45" type="number">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-1">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="height" class="form-label fs-7 fw-lighter">Height
-                                        (m)</label>
-                                    <input class="form-control form-control-sm" id="height" value="1.6" type="number">
-                                </div>
-                                <div class="col"><label for="mass" class="form-label fs-7 fw-lighter">Mass (g)</label>
-                                    <input class="form-control form-control-sm" id="mass" value="3.5" type="number">
+    <!-- for desktops and tablets -->
+    <div class="d-none d-md-block">
+        <nav class="navbar bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="#"><i class="fa-solid fa-crosshairs pe-2 fs-5"></i>Ballistic
+                    Calculator</a>
+                <a class="d-flex justify-content-end text-white pe-2 text-decoration-none">Calculate the trajectory of
+                    Missile</a>
+            </div>
+        </nav>
+        <div class="container mt-4">
+            <h1 class="text-danger">Ballistic Trajectory Calculator</h1>
+            <hr class="text-danger">
+    
+            Use this ballistic calculator in order to calculate the flight path of a bullet given the shooting
+            parameters that meet your conditions. This calculator will produce a ballistic trajectory chart that
+            shows the bullet drop, bullet energy, windage, and velocity. It will a produce a line graph showing the
+            bullet drop and flight path of the bullet. By adding trajectories to the panel on the right you may
+            produce charts and graphs that show the different trajectories side by side. This can be useful in
+            comparing cartridges or loads.
+            <hr>
+            <div class="row">
+                <div class="col-4">
+                    <div class="card mt-4">
+                        <div class="card-header text-center text-danger">Single Trajectory</div>
+                        <div class="card-body">
+                            <div class="mb-1">
+                                <div class="row">
+                                    <div class="col"><label for="velocity" class="form-label fs-7 fw-lighter">Velocity
+                                            (m/s)</label>
+                                        <input class="form-control form-control-sm" id="velocity" value="85" type="number">
+                                    </div>
+                                    <div class="col"><label for="angle" class="form-label fs-7 fw-lighter">Angle
+                                            (&deg;)</label>
+                                        <input class="form-control form-control-sm" id="angle" value="45" type="number">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-1">
-                            <div class="row">
-                                <div class="col"> <label for="diameter" class="form-label fs-7 fw-lighter">Diameter
-                                        (mm)</label>
-                                    <input class="form-control form-control-sm" id="diameter" value="9.525"
-                                        type="number">
-                                </div>
-                                <div class="col"><label for="drag-coefficient" class="form-label fs-7 fw-lighter">Drag
-                                        Coefficient</label>
-                                    <input class="form-control form-control-sm" id="drag-coefficient" value="0.5"
-                                        type="number">
+                            <div class="mb-1">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="height" class="form-label fs-7 fw-lighter">Height
+                                            (m)</label>
+                                        <input class="form-control form-control-sm" id="height" value="1.6" type="number">
+                                    </div>
+                                    <div class="col"><label for="mass" class="form-label fs-7 fw-lighter">Mass (g)</label>
+                                        <input class="form-control form-control-sm" id="mass" value="3.5" type="number">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col"> <label for="gravity" class="form-label fs-7 fw-lighter">Gravitational
-                                        Acceleration</label>
-                                    <input class="form-control form-control-sm" id="gravity" value="9.81" type="number">
-                                </div>
-                                <div class="col"> <label for="fluid-density" class="form-label fs-7 fw-lighter">Fluid
-                                        Density
-                                        (kg/m&sup3;)</label>
-                                    <input class="form-control form-control-sm" id="fluid-density" value="1.29"
-                                        type="number">
+                            <div class="mb-1">
+                                <div class="row">
+                                    <div class="col"> <label for="diameter" class="form-label fs-7 fw-lighter">Diameter
+                                            (mm)</label>
+                                        <input class="form-control form-control-sm" id="diameter" value="9.525"
+                                            type="number">
+                                    </div>
+                                    <div class="col"><label for="drag-coefficient" class="form-label fs-7 fw-lighter">Drag
+                                            Coefficient</label>
+                                        <input class="form-control form-control-sm" id="drag-coefficient" value="0.5"
+                                            type="number">
+                                    </div>
                                 </div>
                             </div>
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col"> <label for="gravity" class="form-label fs-7 fw-lighter">Gravitational
+                                            Acceleration</label>
+                                        <input class="form-control form-control-sm" id="gravity" value="9.81" type="number">
+                                    </div>
+                                    <div class="col"> <label for="fluid-density" class="form-label fs-7 fw-lighter">Fluid
+                                            Density
+                                            (kg/m&sup3;)</label>
+                                        <input class="form-control form-control-sm" id="fluid-density" value="1.29"
+                                            type="number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input id="plot-trajectory" class="btn btn-primary me-4 btn-sm" type="button"
+                                    value="Plot Trajectory">
+                                <input id="cancel" class="btn btn-danger btn-sm" type="button" value="Cancel">
+                                <input id="generate-image" class="btn btn-secondary btn-sm" type="button"
+                                    value="Generate PNG" title="Generate a copy of the graph that you can save.">
+                            </div>
+    
+                            <!-- <table id="flight-stats" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Flight Stats</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Duration:</th>
+                                        <td><span id="flight-duration"></span></td>
+                                        <td class="unit">seconds</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Distance:</th>
+                                        <td><span id="flight-distance"></span></td>
+                                        <td class="unit">metres</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Max Height:</th>
+                                        <td id="flight-height"></td>
+                                        <td class="unit">metres</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Initial Energy:</th>
+                                        <td id="kinetic-energy"></td>
+                                        <td class="unit">joules</td>
+                                    </tr>
+                                </tbody>
+                            </table> -->
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <input id="plot-trajectory" class="btn btn-primary me-4 btn-sm" type="button"
-                                value="Plot Trajectory">
-                            <input id="cancel" class="btn btn-danger btn-sm" type="button" value="Cancel">
-                            <input id="generate-image" class="btn btn-secondary btn-sm" type="button"
-                                value="Generate PNG" title="Generate a copy of the graph that you can save.">
-                        </div>
-
-                        <!-- <table id="flight-stats" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th colspan="2">Flight Stats</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Duration:</th>
-                                    <td><span id="flight-duration"></span></td>
-                                    <td class="unit">seconds</td>
-                                </tr>
-                                <tr>
-                                    <th>Distance:</th>
-                                    <td><span id="flight-distance"></span></td>
-                                    <td class="unit">metres</td>
-                                </tr>
-                                <tr>
-                                    <th>Max Height:</th>
-                                    <td id="flight-height"></td>
-                                    <td class="unit">metres</td>
-                                </tr>
-                                <tr>
-                                    <th>Initial Energy:</th>
-                                    <td id="kinetic-energy"></td>
-                                    <td class="unit">joules</td>
-                                </tr>
-                            </tbody>
-                        </table> -->
                     </div>
                 </div>
-            </div>
-            <div class="col-8">
-                <div id="graph-container" class="mb-3"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <div class="mb-1">
-                    <label for="animationAngle" class="form-label fs-7 fw-lighter">Launch Angle</label>
-                    <div><input id="animationAngle" min="0" max="90" type="range"></div>
+                <div class="col-8">
+                    <div id="graph-container" class="mb-3"></div>
                 </div>
-                <div class="mb-1">
-                    <label for="animationVelocity" class="form-label fs-7 fw-lighter">Velocity</label>
-                    <div><input id="animationVelocity" min="0" max="10" type="range"></div>
-                </div>
-                <div class="mb-1">
-                    <label for="animationSpeed" class="form-label fs-7 fw-lighter">Animation Speed</label>
-                    <div>
-                        <div class="d-inline"><input id="animationSpeed" min="0" max="1000" type="range" oninput="animationSpeedValue.innerText=this.value"> 
-                            <span id="animationSpeedValue" class="fs-7 text-secondary py-5">5</span></div>
-                        
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="mb-1">
+                        <label for="animationAngle" class="form-label fs-7 fw-lighter">Launch Angle</label>
+                        <div><input id="animationAngle" min="0" max="90" type="range"></div>
+                    </div>
+                    <div class="mb-1">
+                        <label for="animationVelocity" class="form-label fs-7 fw-lighter">Velocity</label>
+                        <div><input id="animationVelocity" min="0" max="10" type="range"></div>
+                    </div>
+                    <div class="mb-1">
+                        <label for="animationSpeed" class="form-label fs-7 fw-lighter">Animation Speed</label>
+                        <div>
+                            <div class="d-inline"><input id="animationSpeed" min="0" max="1000" type="range" oninput="animationSpeedValue.innerText=this.value"> 
+                                <span id="animationSpeedValue" class="fs-7 text-secondary py-5">5</span></div>
+                            
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div><input id="btnStart" class="btn btn-primary btn-sm" type="button" value="Start"></div>
                     </div>
                 </div>
-                <div class="mb-1">
-                    <label for="height" class="form-label fs-7 fw-lighter">Animation Speed</label>
-                    <div><input id="btnStart" class="btn btn-primary btn-sm" type="button" value="Start"></div>
+                <div class="col-8">
+                    <canvas id="canvas" width="700" height="250" class="ms-5" style="border:black solid 0.5px;">
+                        Your browser does not support HTML5 tags
+                    </canvas>
                 </div>
-            </div>
-            <div class="col-8">
-                <canvas id="canvas" width="700" height="250" class="ms-5" style="border:black solid 0.5px;">
-                    Your browser does not support HTML5 tags
-                </canvas>
             </div>
         </div>
     </div>
+    
+    <!-- for mobiles -->
+    <div class=" d-sm-block d-md-none">
+        <nav class="navbar bg-primary">
+            <div class="container-fluid justify-content-center">
+                <a class="navbar-brand text-white" href="#"><i class="fa-solid fa-crosshairs pe-2 fs-5"></i>Ballistic
+                    Calculator</a>
+                <a class="d-flex justify-content-end text-white pe-2 text-decoration-none">Calculate the trajectory of
+                    Missile</a>
+            </div>
+        </nav>
+        <div class="container mt-4">
+            <h1 class="text-danger text-center fs-4">Ballistic Trajectory Calculator</h1>
+            <h6 class="text-center" >
+    
+            Use this ballistic calculator in order to calculate the flight path of a bullet given the shooting
+            parameters that meet your conditions. This calculator will produce a ballistic trajectory chart that
+            shows the bullet drop, bullet energy, windage, and velocity. It will a produce a line graph showing the
+            bullet drop and flight path of the bullet. By adding trajectories to the panel on the right you may
+            produce charts and graphs that show the different trajectories side by side. This can be useful in
+            comparing cartridges or loads.
+            </h6>
+        
+                <div class="">
+                    <div class="card mt-4">
+                        <div class="card-header text-center text-danger">Single Trajectory</div>
+                        <div class="card-body">
+                            <div class="mb-1">
+                                <div class="row">
+                                    <div class="col"><label for="velocity" class="form-label fs-7 fw-lighter">Velocity
+                                            (m/s)</label>
+                                        <input class="form-control form-control-sm" id="velocity-mobile" value="85" type="number">
+                                    </div>
+                                    <div class="col"><label for="angle" class="form-label fs-7 fw-lighter">Angle
+                                            (&deg;)</label>
+                                        <input class="form-control form-control-sm" id="angle-mobile" value="45" type="number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="height" class="form-label fs-7 fw-lighter">Height
+                                            (m)</label>
+                                        <input class="form-control form-control-sm" id="height-mobile" value="1.6" type="number">
+                                    </div>
+                                    <div class="col"><label for="mass" class="form-label fs-7 fw-lighter">Mass (g)</label>
+                                        <input class="form-control form-control-sm" id="mass-mobile" value="3.5" type="number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <div class="row">
+                                    <div class="col"> <label for="diameter" class="form-label fs-7 fw-lighter">Diameter
+                                            (mm)</label>
+                                        <input class="form-control form-control-sm" id="diameter-mobile" value="9.525"
+                                            type="number">
+                                    </div>
+                                    <div class="col"><label for="drag-coefficient" class="form-label fs-7 fw-lighter">Drag
+                                            Coefficient</label>
+                                        <input class="form-control form-control-sm" id="drag-coefficient-mobile" value="0.5"
+                                            type="number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col"> <label for="gravity" class="form-label fs-7 fw-lighter">Gravitational
+                                            Acceleration</label>
+                                        <input class="form-control form-control-sm" id="gravity-mobile" value="9.81" type="number">
+                                    </div>
+                                    <div class="col"> <label for="fluid-density" class="form-label fs-7 fw-lighter">Fluid
+                                            Density
+                                            (kg/m&sup3;)</label>
+                                        <input class="form-control form-control-sm" id="fluid-density-mobile" value="1.29"
+                                            type="number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input id="plot-trajectory-mobile" class="btn btn-primary me-4 btn-sm" type="button"
+                                    value="Plot Trajectory">
+                                <input id="cancel-mobile" class="btn btn-danger btn-sm" type="button" value="Cancel">
+                                <input id="generate-image-mobile" class="btn btn-secondary btn-sm" type="button"
+                                    value="Generate PNG" title="Generate a copy of the graph that you can save.">
+                            </div>
+    
+                            <!-- <table id="flight-stats" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Flight Stats</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Duration:</th>
+                                        <td><span id="flight-duration"></span></td>
+                                        <td class="unit">seconds</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Distance:</th>
+                                        <td><span id="flight-distance"></span></td>
+                                        <td class="unit">metres</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Max Height:</th>
+                                        <td id="flight-height"></td>
+                                        <td class="unit">metres</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Initial Energy:</th>
+                                        <td id="kinetic-energy"></td>
+                                        <td class="unit">joules</td>
+                                    </tr>
+                                </tbody>
+                            </table> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container p-0 mt-3" >
+                    <div id="graph-container-mobile" class="mb-3"></div>
+                </div>
+            
+                <div class="container d-grid justify-content-center mb-3">
+                    <div class="container border">
+                        <div class="mb-1">
+                            <label for="animationAngle" class="form-label fs-7 fw-lighter">Launch Angle</label>
+                            <div><input id="animationAngle-mobile" min="0" max="90" type="range"></div>
+                        </div>
+                        <div class="mb-1">
+                            <label for="animationVelocity" class="form-label fs-7 fw-lighter">Velocity</label>
+                            <div><input id="animationVelocity-mobile" min="0" max="10" type="range"></div>
+                        </div>
+                        <div class="mb-1">
+                            <label for="animationSpeed" class="form-label fs-7 fw-lighter">Animation Speed</label>
+                            <div>
+                                <div class="d-inline"><input id="animationSpeed-mobile" min="0" max="1000" type="range" oninput="animationSpeedValue.innerText=this.value"> 
+                                
+                            </div>
+                        </div>
+                        <div class="mb-1 ">
+                            <div class="justify-content-center mt-3 d-grid"><input id="btnStart-mobile" class="btn btn-primary btn-sm" type="button" value="Start"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            
+        </div>
+        <div class="container m-0 p-0">
+            <canvas id="canvas-mobile" width="380" height="250" style="border:black solid 0.5px;">
+                Your browser does not support HTML5 tags
+            </canvas>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
